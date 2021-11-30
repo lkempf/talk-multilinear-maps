@@ -1,0 +1,20 @@
+\newcommand*{\todo}[1]{\textcolor{red}{TODO:~#1}}
+
+\usepackage{suffix}
+\newcommand{\citeauthoryear}[1]{\citeauthor{#1} \citeyear{#1}}
+\WithSuffix\newcommand\citeauthoryear*[1]{\citeauthor*{#1} \citeyear{#1}}
+
+\newcommand*{\IN}{\mathbb{N}}
+\newcommand*{\IZ}{\mathbb{Z}}
+
+\usepackage{mathtools}
+\DeclareMathOperator{\smod}{mod}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\crt}{CRT}
+\DeclareMathOperator{\diag}{diag}
+
+\newcommand*{\crtp}[2][i]{\crt_{(p_{#1})}\left(#2\right)}
+
+\newcommand*{\rand}{\mathcal{R}}
+
+\newcommand*{\pubkey}{\mathrm{pubKey}}
