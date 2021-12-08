@@ -13,8 +13,10 @@
 \DeclareMathOperator{\crt}{CRT}
 \DeclareMathOperator{\diag}{diag}
 
-\newcommand*{\crtp}[2][i]{\crt_{(p_{#1})}\left(#2\right)}
+\newcommand*{\crtp}[2][i]{\crt_{(p_{#1})}\left(\left[#2\right]\right)}
 
-\newcommand*{\rand}{\mathcal{R}}
+\usepackage{epsdice}
+\newcommand*{\rand}{\mathrm{rand}}
+\newcommand*{\rgets}{\xleftarrow{\rand}}
 
 \newcommand*{\pubkey}{\mathrm{pubKey}}
