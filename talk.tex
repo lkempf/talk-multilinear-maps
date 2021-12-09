@@ -110,7 +110,7 @@
         With multilinear maps: DH between multiple parties in one round.
         \pause
 
-        Let $e: G_1^\kappa \leftarrow G_2$ be a $\kappa$-multilinear map and $g$ a generator of $G_1$.
+        Let $e: G_1^\kappa \rightarrow G_2$ be a $\kappa$-multilinear map and $g$ a generator of $G_1$.
 
         Each of the $\kappa+1$ parties chooses $a_i \rgets \IN$ and broadcasts $f_i = g^{a_i}$.
 
@@ -138,14 +138,17 @@
         Multiplication is possible: For $v_1 \in S^{(r_1)}_{t_1}$ and $v_2 \in S^{(r_2)}_{t_2}$ we have $v_1 \cdot v_2 \in S^{(r_1 \cdot r_2)}_{t_1 + t_2}$ if $t_1 + t_2 \leq \kappa$, the maximum level.
     \end{frame}
     \begin{frame}{Interpretation of graded multilinear maps}
-        Let $v \in S^{(r)}_t$ be a level $t$ encoding of $r \in \IZ$. Let $e: G_1^\kappa \rightarrow G_2$ be $\kappa$ multilinear map with $g$ generator of $G_1$.
+        Let $v \in S^{(r)}_t$ be a level $t$ encoding of $r \in \IZ$. Let $G_1$ be a group with generator $g$.
 
         For $t = 0$ interpret $v$ as a scalar $r$.
 
-        For $t = 1$ interpret $v$ as group element $g^r \in G_1$ or $e(g, \dots, g)^r$
+        For $t = 1$ interpret $v$ as group element $g^r \in G_1$.
         \pause
 
-        For $t = i \leq \kappa$ let $v$ be the product of $i$ level-1 encodings $g^{r_1}, \dots, g^{r_i}$. Interpret this product as evaluation $e(g^{r_1}, \dots, g^{r_i}, g, \dots, g) = e(g, \dots, g)^{r_1\cdots r_i}$.
+        Let $v_1$ and $v_2$ be two level-1 encodings of $r_1$ and $r_2$. Interpret $v_1 + v_2$ as $g^{r_1 + r_2}$. Interpret $v_1 \cdot v_2$ as evaluation of some multilinear pairing $e(g^{r_1}, g^{r_2}) = e(g, g)^{r_1 \cdot r_2}$.
+        \pause
+
+        \Rightarrow We can see $e(g, g)$ as the generator of some group $G_2$ of level-2 encodings.
     \end{frame}
     \begin{frame}{Chinese remainder theorem}
         \begin{theorem}[Chinese remainder theorem over the integers]
@@ -158,7 +161,7 @@
         \end{equation*}
         and
         \begin{equation*}
-            g : (x_1, \dots, x_n) \longmapsto \sum_{i=1}^n 1_{p_i}x_i
+            g : (x_1, \dots, x_n) \longmapsto \sum_{i=1}^n 1_{p_i}x_i \mod M
         \end{equation*}
         where $1_{p_i}$ is chosen so that $f\left(1_{p_i}\right)$ is 1 in exactly the i-th component and $f \circ g = \id$.
 
@@ -193,7 +196,7 @@
 
         Multiplying encodings:
         \begin{equation*}
-            \frac{r_i \cdot g_i + m_i}{d^t} + \frac{r'_i \cdot g_i + m'_i}{d^{t'}} \equiv \frac{r^\dagger_i \cdot g_i + m_i \cdot m'_i}{d^{t + t'}} \mod p_i
+            \frac{r_i \cdot g_i + m_i}{d^t} \cdot \frac{r'_i \cdot g_i + m'_i}{d^{t'}} \equiv \frac{r^\dagger_i \cdot g_i + m_i \cdot m'_i}{d^{t + t'}} \mod p_i
         \end{equation*}
     \end{frame}
     \begin{frame}{CLT13 --- Idea}
@@ -291,19 +294,19 @@
 
         Before attacking CLT13 we look at a simpler but similar problem:
         \begin{definition}[CRT-ACD Problem]
-            Let $n, \eta, \varepsilon \in \IN$. Let $\chi_\varepsilon$ be a distribution over $(-2^\varepsilon, 2^\varepsilon) \cap \IZ$. For given $\eta$-bit primes $p_1, \dots, p_n$ define the distribution
+            Let $n, \eta, \varepsilon \in \IN$. For given $\eta$-bit primes $p_1, \dots, p_n$ define the distribution
             \begin{equation*}
-                D_{\chi_\varepsilon, \eta, n}(p_1, \dots, p_n) = \left\lbrace \crtp{r_i} \mid r_i \rgets \chi_\varepsilon \right\rbrace.
+                D_{\varepsilon, \eta, n}(p_1, \dots, p_n) = \left\lbrace \crtp{r_i} \mid r_i \rgets (-2^\varepsilon, 2^\varepsilon) \cap \IZ \right\rbrace.
             \end{equation*}
-            CRT-ACD Problem: Given many samples from $D_{\chi_\varepsilon, \eta, n}(p_1, \dots, p_n)$ and $M = \prod_{i=1}^n p_i$ find all $p_i$.
+            CRT-ACD Problem: Given many samples from $D_{\varepsilon, \eta, n}(p_1, \dots, p_n)$ and $M = \prod_{i=1}^n p_i$ find all $p_i$.
         \end{definition}
         \pause
 
-        Let $\hat{p}_i = M / p_i$. $\hat{P} = \crtp{\hat{p}_i}$ is called auxillary input.
+        Let $\hat{p}_i = M / p_i$. $\hat{P} = \crtp{\hat{p}_i}$ is called auxillary input. This can be seen as simpler version of $p_{zt}$.
     \end{frame}
     \begin{frame}{Attacking CLT13 --- CRT-ACD}
         \begin{lemma}
-            Given $a = \crtp{r_i} \rgets D_{\chi_\varepsilon, \eta, n}(p_1, \dots, p_n)$ and $\hat{P} = \crtp{\hat{p}_i}$ it holds that
+            Given $a = \crtp{r_i} \rgets D_{\varepsilon, \eta, n}(p_1, \dots, p_n)$ and $\hat{P} = \crtp{\hat{p}_i}$ it holds that
             \begin{equation*}
                 \hat{P} \cdot a \smod M = \crtp{\hat{p}_i \cdot r_i} = \sum_{i=1}^n \hat{p}_i \cdot r_i
             \end{equation*}
@@ -476,7 +479,14 @@
         \end{itemize}
     \end{frame}
     \begin{frame}{Why this topic?}
-        \includegraphics[width=\linewidth]{img/chall_desc.png}
+        \begin{itemize}
+            \item Topic was chosen as basis for CTF-Challenge originally.
+            \item Plan: Implement DH with CLT13 and let players implement the attack.
+            \pause
+            \item However: Calculating eigenvalues of larger matrix with large integers is a bit slow.
+            \item Solution: Use weak re-randomization instead.
+            \item If you like applying cryptography it might be fun to look at CTFs.
+        \end{itemize}
     \end{frame}
     %\begin{frame}[allowframebreaks]{References}
     %    \printbibliography[heading=none]
