@@ -1,5 +1,12 @@
 {
     "cSpell.words": [
-        "multilinear"
-    ]
+        "Diffie",
+        "GDDH",
+        "homomorphic",
+        "indistinguishability",
+        "multilinear",
+        "obfuscater"
+    ],
+    "latex-workshop.latex.autoBuild.run": "never",
+    "cSpell.enabled": true
 }
