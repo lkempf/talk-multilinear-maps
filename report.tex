@@ -111,7 +111,7 @@
     \begin{definition}[$\kappa$-graded encoding system~\cite{cryptoeprint:2013:183}]
         For a given ring $R$ a $\kappa$-graded encoding system gives a set $S^{(r)}_t$ for every $r \in R$ and $0 \leq t \leq \kappa$ so that:
         \begin{enumerate}
-            \item For every fixed $t$ the sets in $\{ S^{(r)}_t \mid r \in R \}$ are disjoint.
+            \item For every fixed $t$ the sets in $\left\lbrace S^{(r)}_t \,\middle|\, r \in R \right\rbrace$ are disjoint.
             \item Let $r_1, r_2 \in R$ be encoded as some $s_1 \in S^{(r_1)}_t, s_1 \in S^{(r_2)}_t$ at any level $t$. Then we have binary operations $+$ and $-$ so that $s_1 + s_2 \in S^{(r_1 + r_2)}_t$ and $s_1 - s_2 \in S^{(r_1 - r_2)}_t$.
             \item Let $r_1, r_2 \in R$ be encoded as some $s_1 \in S^{(r_1)}_{t_1}, s_1 \in S^{(r_2)}_{t_2}$ at levels $t_1, t_2 \in \IN$ with $0 \leq t_1 + t_2 \leq \kappa$. Then we have an associative binary operation $\cdot$ so that $s_1 \cdot s_2 \in S^{(r_1 \cdot r_2)}_{t_1 + t_2}$.
         \end{enumerate}
@@ -264,7 +264,7 @@
         \end{pmatrix}.
     \end{equation*}
 
-    Since the matrix representations have the matrix $\diag(\hat{p}_1, \dots, \hat{p}_n)$ in common for any $a$ and $b$ we can construct a matrix which is a multiple of this diagonal matrix.
+    Since the matrix equations have the matrix $\diag(\hat{p}_1, \dots, \hat{p}_n)$ in common for any $a$ and $b$ we can construct a matrix equation containing a multiple of this diagonal matrix.
     Draw $2n+1$ samples
     \begin{equation*}
         a_i = \crtp[k]{a_{k, i}}, b = \crtp[k]{b_k}, c_j = \crtp[k]{c_{k, j}}
@@ -346,7 +346,7 @@
     However, to this date most candidates for cryptographic multilinear maps have been broken. CLT13 and its improvement CLT15 have been broken in regards to GDDH~\cite{cryptoeprint:2014:906,cryptoeprint:2016:135}. Indistinguishability obfuscation based on CLT13 has also been broken in multiple cases~\cite{cryptoeprint:2019:1254,cryptoeprint:2019:309}.
     A lattice based approach to build a multilinear map by \citeauthor*{cryptoeprint:mm_gentry} has been attacked successfully~\cite*{cryptoeprint:ggh_attack}.
     The MZ17 construction, which built upon CLT13, is still standing regarding the GDDH assumption~\cite{cryptoeprint:2017:946}.
-    An outdated but more thorough overview of the current state of graded encoding schemes can be found at \url{https://malb.io/are-graded-encoding-schemes-broken-yet.html}. This highlights that more research is needed in order to find a good candidate to prove the non-existence of cryptographic multilinear maps.
+    An outdated but more thorough overview of the current state of graded encoding schemes can be found at \url{https://malb.io/are-graded-encoding-schemes-broken-yet.html}. This highlights that more research is needed in order to find a good candidate or to prove the non-existence of cryptographic multilinear maps.
 
     \printbibliography
 
